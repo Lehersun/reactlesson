@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+#root {
+  margin: 0 auto;
+  max-width: 1170px;
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.comments {
+  padding: 40px;
+  background-color: #f9f9fb;
+}
+.comments-list {
+  margin: 0;
+  padding: 0;
+}
+.comment-body {
+  background-color: ghostwhite;
+  margin: 2rem 0;
+  border: 1px solid gray;
+  border-radius: 0.2rem;
+  list-style-type: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.comment-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  padding: 10px 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.comment-header_name {
+  font-size: large;
+  font-weight: 700;
+}
+.comment-delete-button {
+  margin: none;
+  border: 0;
+  border-radius: 0.5rem;
+  background-color: thistle;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.comment-delete-button:hover {
+  background-color: red;
+}
+
+.comment-content {
+  padding: 10px 20px;
+  min-height: 50px;
+}
+.comment-footer {
+  font-size: small;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-top: 1px solid gray;
+}
+.comment-footer_date {
+  margin-right: 1rem;
+}
+
+.add-comment {
+  position: relative;
+  padding: 20px;
+  background-color: ghostwhite;
+  border: 1px solid gray;
+  border-radius: 0.2rem;
+}
+
+.add-comment_label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.add-comment_name {
+  margin-bottom: 0.5rem;
+  width: 200px;
+  padding: 10px;
+}
+
+.add-comment_text {
+  margin-bottom: 0.5rem;
+  width: 700px;
+  height: 3rem;
+  padding: 10px;
+  resize: none;
+}
+
+.add-comment_button {
+  position: absolute;
+  bottom: 35px;
+  right: 50px;
+  border: 0;
+  border-radius: 0.5rem;
+  background-color: thistle;
+  height: 50px;
+  width: 200px;
+  margin-left: 3rem;
 }

@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import CommentsList from "./comment/CommentsList";
+import Context from "./context";
+import AddComment from "./comment/AddComment";
 
 function App() {
+  const [comments, setComments] = React.useState(
+    JSON.parse(localStorage.getItem("comments") || "[]")
+  );
+
+  function removeComment(id) {
+    setComments(comments.filter((comment) => comment.id !== id));
+  }
+
+  function newComment(name, text) {
+    setComments(
+      comments.concat([
+        {
+          id: Date.now(),
+          name,
+          text,
+          date: Date(),
+        },
+      ])
+    );
+  }
+
+  localStorage.setItem("comments", JSON.stringify(comments));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Context.Provider value={{ removeComment }}>
+      <div className="comments">
+        <h1>Комментарии:</h1>
+
+        {comments.length ? (
+          <CommentsList comments={comments} />
+        ) : (
+          <p>Нет комментариев ...</p>
+        )}
+        <AddComment onCreate={newComment} />
+      </div>
+    </Context.Provider>
   );
 }
 
