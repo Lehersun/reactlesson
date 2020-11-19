@@ -10,6 +10,8 @@ function AddComment({ onCreate }) {
 
     if (name.trim() && text.trim()) {
       onCreate(name, text);
+      setName("");
+      setText("");
     }
 
     event.target[0].value = "";
